@@ -132,12 +132,12 @@ const App = () => {
       const connectedContract = new ethers.Contract(CONTRACT_ADDRESS, contractABI, signer);
 
       console.log("Going to pop wallet now to pay gas...")
-      let nftTxn = await connectedContract.sendETHFromFaucet(100000);
+      let nftTxn = await connectedContract.sendETHFromFaucet(10000000000000);
 
       console.log("Mining...please wait.")
       await nftTxn.wait();
       
-      console.log(`Mined, see transaction: https://rinkeby.etherscan.io/tx/${nftTxn.hash}`);
+      console.log(`Mined, see transaction: https://ropsten.etherscan.io/tx/${nftTxn.hash}`);
 
       setTXHash(nftTxn.hash);
 
