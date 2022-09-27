@@ -108,9 +108,12 @@ const App = () => {
 
   // Render Methods
   const renderNotConnectedContainer = () => (
-    <button onClick={connectWallet} className="cta-button connect-wallet-button">
+    <div className="flex justify-center content-center py-5">
+<button onClick={connectWallet} className="flex justify-center content-center">
       Connect to Wallet
     </button>
+    </div>
+    
   );
 //
   useEffect(() => {
@@ -154,7 +157,7 @@ const App = () => {
       return (
     <div className=" flex-col flex  m-auto items-center bg-slate-200 h-screen ">
       <div className="bg-white p-10 rounded font-bold m-10 items-center w-1/2 ">
-        <h2 className="font-bold text-3xl underline text-center">ETH Testnet faucet(ropsten)</h2>
+        <h2 className="font-bold text-3xl  text-center">ETH Testnet faucet(ropsten)</h2>
          
         {currentAccount === ""  ? (
           renderNotConnectedContainer()
