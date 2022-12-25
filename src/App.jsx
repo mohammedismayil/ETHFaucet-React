@@ -17,6 +17,9 @@ const PRIVATE_KEY =  "31f31a1674e45b7c5df4f1adfc7261c8a09ad3bc3e6dec6a23ac2a916e
 const App = () => {
   const [currentAccount, setCurrentAccount] = useState("");
    const [transactionHash, setTXHash] = useState();
+
+
+   const sampleHash = "0xe922d87c1f232b7aaefe233c65c57ada6b027734e704332701515c2f54445fa1";
   const [errorMessage, setErrorMessage] = useState();
   const checkIfWalletIsConnected = async () => {
     const { ethereum } = window;
@@ -488,6 +491,7 @@ const App = () => {
     
     web3.eth.sendSignedTransaction(signedTx.rawTransaction, function(error, hash) {
     if (!error) {
+      setTXHash(hash);
       console.log("🎉 The hash of your transaction is: ", hash, "\n Check Alchemy's Mempool to view the status of your transaction!");
     } else {
       console.log("❗Something went wrong while submitting your transaction:", error)
@@ -548,11 +552,16 @@ const App = () => {
         </div>
         {transactionHash ? (
           <div className="flex justify-center content-center ">
-            <h3 className="pt-10  mx-5 justify-center content-center text-center">
-              Transaction Hash: {transactionHash}
-            </h3>
-          </div>
-        ) : null}
+          <h3 className="pt-10  mx-5 justify-center content-center text-center">
+          
+  
+            <a href={"https://goerli.etherscan.io/tx/" +transactionHash } target="_blank">  Transaction Hash: {transactionHash}</a>
+          </h3>
+  
+  
+         
+        </div>
+        ) : null }
 
         {errorMessage ? (
           <div className="flex justify-center content-center ">
